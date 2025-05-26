@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrinqueCars - Loja de Carros de Brinquedo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">Brinque<span>Cars</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+                <button class="cart-button" onclick="toggleCart()">
+                    🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+                <div class="cart-overlay" id="cartOverlay" onclick="closeCartOverlay(event)">
+        <div class="cart-panel">
+            <div class="cart-header">
+                <h2 class="cart-title">Seu Carrinho</h2>
+                <button class="close-cart" onclick="toggleCart()">×</button>
+            </div>
+            
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">🛒</div>
+                    <p>Seu carrinho está vazio</p>
+                </div>
+            </div>
+            
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">R$ 0,00</span>
+                </div>
+                <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>
+                    Finalizar Compra
+                </button>
+            </div>
+        </div>
+    </div>
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Os Melhores Carros de Brinquedo para Todas as Idades</h1>
+            <p>Qualidade, diversão e segurança em cada modelo. Explore nossa coleção exclusiva!</p>
+            <button class="btn btn-primary">Ver Catálogo</button>
+        </div>
+    </section>
+
+    <section class="featured">
+        <h2 class="section-title">Mais Populares</h2>
+        <div class="featured-cars">
+            <div class="car-card">
+                <div class="car-img">
+                    <img src="/api/placeholder/300/200" alt="Carro de Corrida F1">
+                </div>
+                <div class="car-info">
+                    <h3 class="car-title">Carro de Corrida F1 - Edição Especial</h3>
+                    <p class="car-price">R$ 199,90</p>
+                    <p class="car-desc">Carro de corrida com detalhes realistas, feito em metal e plástico resistente.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(1, 'Carro de Corrida F1 - Edição Especial', 199,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">
+                    <img src="/api/placeholder/300/200" alt="Caminhão Monster Truck">
+                </div>
+                <div class="car-info">
+                    <h3 class="car-title">Caminhão Monster Truck 4x4</h3>
+                    <p class="car-price">R$ 249,90</p>
+                    <p class="car-desc">Monster truck com suspensão e rodas grandes, perfeito para aventuras off-road.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(2, 'Caminhão Monster Truck 4x4', 249,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+            <div class="car-card">
+                <div class="car-img">
+                    <img src="/api/placeholder/300/200" alt="Carro Esportivo Vermelho">
+                </div>
+                <div class="car-info">
+                    <h3 class="car-title">Carro Esportivo Vermelho</h3>
+                    <p class="car-price">R$ 179,90</p>
+                    <p class="car-desc">Réplica de carro esportivo com portas que abrem e detalhes internos.</p>
+                    <button class="add-to-cart-btn" onclick="addToCart(3, 'Carro Esportivo Vermelho', 179,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog" id="catalogo">
+        <div class="catalog-container">
+            <h2 class="section-title">Nosso Catálogo</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Mini Cooper Vintage">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Mini Cooper Vintage</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-price">R$ 129,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(4, 'Mini Cooper Vintage', 129,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Lamborghini Miniatura">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Lamborghini Miniatura</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-price">R$ 159,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(5, 'Lamborghini Miniatura', 159,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Jipe Safari">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Jipe Safari</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-price">R$ 189,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(6, 'Jipe Safari', 189,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Caminhão de Bombeiros">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Caminhão de Bombeiros</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-price">R$ 219,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(7, 'Caminhão de Bombeiros', 219,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Formula 1 Ferrari">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Formula 1 Ferrari</h3>
+                        <div class="product-rating">★★★★★</div>
+                        <p class="product-price">R$ 199,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(8, 'Formula 1 Ferrari', 199,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Trator Agrícola">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trator Agrícola</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-price">R$ 169,90</p>
+                         <button class="add-to-cart-btn" onclick="addToCart(9, 'Trator Agrícola', 169,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Carro de Polícia">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Carro de Polícia</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-price">R$ 149,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(10, 'Carro de Polícia', 149,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-img">
+                        <img src="/api/placeholder/250/180" alt="Ambulância">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Ambulância</h3>
+                        <div class="product-rating">★★★★☆</div>
+                        <p class="product-price">R$ 159,90</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(11, 'Ambulância', 159,90, '📱')">
+                        Adicionar ao Carrinho
+                    </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Sobre BrinqueCars</h3>
+                <p>Somos uma loja especializada em carros de brinquedo de alta qualidade, com um catálogo diversificado para todas as idades.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Links Úteis</h3>
+                <ul>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Termos e Condições</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Política de Devolução</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Email: contato@briquecars.com.br</li>
+                    <li>Telefone: (11) 5555-5555</li>
+                    <li>WhatsApp: (11) 99999-9999</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Horário de Atendimento</h3>
+                <p>Segunda a Sexta: 9h às 18h</p>
+                <p>Sábado: 9h às 13h</p>
+                <p>Domingo e Feriados: Fechado</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 BrinqueCars - Todos os direitos reservados</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
